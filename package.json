@@ -1,0 +1,93 @@
+{
+  "id": "zqy-vue-split-view",
+  "name": "vue-split-view",
+  "description": "vue文件双分栏，自动折叠template、script、style标签，实现类似vscode-volar效果",
+  "displayName": "vue-split-view: vue文件双分栏",
+  "version": "0.0.3",
+  "publisher": "zqy",
+  "engines": {
+    "HBuilderX": "^2.7.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension",
+  "activationEvents": [
+	"*",
+    "onCommand:extension.foldAllExpandAndCopyEditor",
+    "onCommand:extension.copyEditorAll",
+    "onCommand:extension.contractScriptTag",
+    "onCommand:extension.contractNoScriptTag",
+    "onCommand:extension.contractStyleTag"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.foldAllExpandAndCopyEditor",
+        "title": "无折叠模式"
+      },
+      {
+        "command": "extension.copyEditorAll",
+        "title": "左分栏不折叠，右分栏则创建三次，分别显示template、script、style标签"
+      },
+      {
+        "command": "extension.contractScriptTag",
+        "title": "左分栏显示template、style标签，右分栏显示script标签"
+      },
+      {
+        "command": "extension.contractNoScriptTag",
+        "title": "左分栏显示script标签，右分栏显示template、style标签"
+      },
+      {
+        "command": "extension.contractStyleTag",
+        "title": "左分栏显示template、script标签，右分栏显示style标签"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "id": "copyEditor",
+          "title": "向右复制分栏并自动折叠",
+          "group": "z_commands"
+        },
+        {
+          "command": "extension.foldAllExpandAndCopyEditor",
+          "group": "copyEditor@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "extension.copyEditorAll",
+          "group": "copyEditor@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "extension.contractScriptTag",
+          "group": "copyEditor@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "extension.contractNoScriptTag",
+          "group": "copyEditor@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "extension.contractStyleTag",
+          "group": "copyEditor@1",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.copyEditorAll",
+        "key": "Ctrl+J",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "extensionDependencies": [
+    "plugin-manager"
+  ],
+  "keywords": [],
+  "license": "MIT"
+}
